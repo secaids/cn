@@ -1,5 +1,5 @@
 TO RUN PYTHON FILE IN TERMINAL USE **py filename.py** command
-# Exp- 1 - STOP AND WAIT PROTOCOL
+# Exp-1 - STOP AND WAIT PROTOCOL
 ## Algo 
 1. Start the program.
 2. Get the frame size from the user
@@ -188,4 +188,57 @@ while True:
     ip=input("Enter logical Address : ")
     s.send(ip.encode())
     print("MAC Address",s.recv(1024).decode())
+```
+# Exp - 6 - SIMULATING PING COMMAND
+## Algo
+1. start the program.
+2. Include necessary package in java.
+3. To create a process object p to implement the ping command.
+4. declare one Buffered Reader stream class object.
+5. Get the details of the server
+    1. length of the IP address.
+    2. time required to get the details.
+    3. send packets, receive packets and lost packets.
+    4. minimum, maximum and average times.
+6. print the results.
+7. Stop the program.
+## Client
+```py
+import socket
+from pythonping import ping
+s=socket.socket()
+s.bind(('localhost',8000))
+s.listen(5)
+c,addr=s.accept()
+while True:
+    hostname=c.recv(1024).decode()
+    try:
+        c.send(str(ping(hostname, verbose=False)).encode())
+    except KeyError:
+        c.send("Not Found".encode())
+```
+## Server
+```py
+import socket
+s=socket.socket()
+s.connect(('localhost',8000))
+while True:
+    ip=input("Enter the website you want to ping ")
+    s.send(ip.encode())
+    print(s.recv(1024).decode())
+```
+# Exp - 7 - SIMULATING TRACEROUTE COMMAND
+## Algo
+1. Start the program.
+2. Get the frame size from the user.
+3. To create the frame based on the user request.
+4. To send frames to server from the client side.
+5. If your frames reach the server, it will send ACK signal to client otherwise it will send NACK signal to client.
+6. Stop the program
+## Prgm
+```py
+from scapy.all import*
+target = ["www.google.com"]
+result, unans = traceroute(target,maxttl=32)
+print(result,unans)
 ```

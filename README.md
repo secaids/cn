@@ -7,8 +7,8 @@ TO RUN PYTHON FILE IN TERMINAL USE **py filename.py** command
 ### <a href = https://github.com/secaids/cn/#exp---6---simulating-ping-command>Simulating Ping Command</a>
 ### <a href = https://github.com/secaids/cn/#exp---7---simulating-traceroute-command>Simulating Traceroute Command</a>
 ### <a href = https://github.com/secaids/cn/#exp---8---echo-client-and-echo-server>Echo client & server</a>
-### <a href = https://github.com/secaids/cn/#exp-1---stop-and-wait-protocol>Stop & Wait protocol</a>
-### <a href = https://github.com/secaids/cn/#exp-1---stop-and-wait-protocol>Stop & Wait protocol</a>
+### <a href = https://github.com/secaids/cn/#exp---9---chat-using-tcp-sockets>Chat using TCP sockets</a>
+### <a href = https://github.com/secaids/cn/#exp---10---file-transfer-using-tcp-sockets>File transfer using TCP</a>
 
 # Exp-1 - STOP AND WAIT PROTOCOL
 ## Algo 
@@ -281,4 +281,89 @@ c,addr=s.accept()
 while True:
   ClientMessage=c.recv(1024).decode()
   c.send(ClientMessage.encode())
+```
+
+# Exp - 9 - CHAT USING TCP SOCKETS
+## Algo
+1. Start the program.
+2. Get the frame size from the user.
+3. To create the frame based on the user request.
+4. To send frames to server from the client side.
+5. If your frames reach the server, it will send ACK signal to client otherwise it will send NACK signal to client.
+6. Stop the program
+## Client
+```py
+import socket
+s=socket.socket()
+s.connect(('localhost',8000))
+while True:
+  msg=input("Client > ")
+  s.send(msg.encode())
+  print("Server > ",s.recv(1024).decode())
+```
+### Server
+```py
+import socket
+s=socket.socket()
+s.bind(('localhost',8000))
+s.listen(5)
+c,addr=s.accept()
+while True:
+ClientMessage=c.recv(1024).decode()
+print("Client > ",ClientMessage)
+msg=input("Server > ")
+c.send(msg.encode())
+```
+#  Exp - 10 - FILE TRANSFER USING TCP SOCKETS
+## Algo
+1. Start the program.
+2. Get the frame size from the user.
+3. To create the frame based on the user request.
+4. To send frames to server from the client side.
+5. If your frames reach the server, it will send ACK signal to client otherwise it will send NACK signal to client.
+6. Stop the program
+## Client
+```py
+import socket
+s = socket.socket()
+host = socket.gethostname()
+port = 60000
+s.connect((host, port))
+s.send("Hello server!".encode())
+with open('received_file', 'wb') as f:
+  while True:
+    print('receiving data...')
+    data = s.recv(1024)
+    print('data=%s', (data))
+    if not data:
+      break
+  f.write(data)
+f.close()
+print('Successfully get the file')
+s.close()
+print('connection closed')
+```
+## Server
+```py
+import socket
+port = 60000
+s = socket.socket()
+host = socket.gethostname()
+s.bind((host, port))
+s.listen(5)
+while True:
+conn, addr = s.accept()
+data = conn.recv(1024)
+print('Server received', repr(data))
+filename='mytext.txt'
+f = open(filename,'rb')
+l = f.read(1024)
+while (l):
+  conn.send(l)
+  print('Sent ',repr(l))
+  l = f.read(1024)
+f.close()
+print('Done sending')
+conn.send('Thank you for connecting'.encode())
+conn.close()
 ```

@@ -1,4 +1,4 @@
-TO RUN PYTHON FILE IN TERMINAL USE **py filename.py** command
+TO RUN PYTHON FILE IN TERMINAL USE **python filename.py** command
 ### <a href = https://github.com/secaids/cn/#exp-1---stop-and-wait-protocol>Stop & Wait protocol</a>
 ### <a href = https://github.com/secaids/cn/#exp---2---sliding-window-protocol>Sliding Window protocol</a>
 ### <a href = https://github.com/secaids/cn/#exp---3---socket-programming>Socket Programming</a>
@@ -44,6 +44,9 @@ while True:
   print(s.recv(1024).decode())
   s.send("Acknowledgement Recived".encode())
 ```
+
+![image](https://user-images.githubusercontent.com/118756330/205697276-08ecbc2d-3aeb-4ca6-ad52-6cb441d9fad3.png)
+
 # Exp - 2 - SLIDING WINDOW PROTOCOL
 ## Algo
 1. Start the program.
@@ -81,6 +84,8 @@ while True:
     print(s.recv(1024).decode())
     s.send("acknowledgement recived from the server".encode())
 ```
+![image](https://user-images.githubusercontent.com/118756330/205697374-68980d18-f7eb-4d67-808e-eabf7f13bb9c.png)
+
 # Exp - 3 - SOCKET PROGRAMMING
 ## ALGO
 ### Server:
@@ -124,6 +129,8 @@ print(s.getsockname())
 print(s.recv(1024).decode())
 s.send("acknowledgement recived from the server".encode())
 ```
+![image](https://user-images.githubusercontent.com/118756330/205697438-ab435383-b6d9-469c-bb9b-16c944626537.png)
+
 # Exp - 4 - Simulate ARP
 ## ALGO
 ### Client
@@ -163,6 +170,8 @@ while True:
     s.send(ip.encode())
     print("MAC Address",s.recv(1024).decode())
 ```
+![image](https://user-images.githubusercontent.com/118756330/205697517-df25b447-c107-45c3-8462-23ad679d7c6b.png)
+
 # Exp - 5 - Simulate RARP
 ### Client:
 1. Start the program
@@ -200,6 +209,8 @@ while True:
     s.send(ip.encode())
     print("MAC Address",s.recv(1024).decode())
 ```
+![image](https://user-images.githubusercontent.com/118756330/205698076-97ec58e3-09bf-4739-a50a-9c68ae5406f9.png)
+
 # Exp - 6 - SIMULATING PING COMMAND
 ## Algo
 1. start the program.
@@ -238,6 +249,8 @@ while True:
     s.send(ip.encode())
     print(s.recv(1024).decode())
 ```
+![image](https://user-images.githubusercontent.com/118756330/205698135-737919b6-0710-442e-aa45-a3b96f8a7c8f.png)
+
 # Exp - 7 - SIMULATING TRACEROUTE COMMAND
 ## Algo
 1. Start the program.
@@ -253,6 +266,8 @@ target = ["www.google.com"]
 result, unans = traceroute(target,maxttl=32)
 print(result,unans)
 ```
+![image](https://user-images.githubusercontent.com/118756330/205698416-e373d6b0-6cb8-4705-bf3a-416fa86a6ed3.png)
+
 # Exp - 8 - ECHO CLIENT AND ECHO SERVER
 ## Algo
 1. Start the program.
@@ -282,6 +297,7 @@ while True:
   ClientMessage=c.recv(1024).decode()
   c.send(ClientMessage.encode())
 ```
+![image](https://user-images.githubusercontent.com/118756330/205698474-cbbc26a7-e4bf-4e26-b0b2-56dea0fcff50.png)
 
 # Exp - 9 - CHAT USING TCP SOCKETS
 ## Algo
@@ -314,6 +330,8 @@ print("Client > ",ClientMessage)
 msg=input("Server > ")
 c.send(msg.encode())
 ```
+![image](https://user-images.githubusercontent.com/118756330/205698555-18f55da3-60cb-4ea0-8312-c55162d99974.png)
+
 #  Exp - 10 - FILE TRANSFER USING TCP SOCKETS
 ## Algo
 1. Start the program.
@@ -367,3 +385,4 @@ print('Done sending')
 conn.send('Thank you for connecting'.encode())
 conn.close()
 ```
+![image](https://user-images.githubusercontent.com/118756330/205698620-3123ce3b-3b4d-410a-871c-58e5cd647094.png)

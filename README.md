@@ -86,7 +86,7 @@ while True:
     s.send("acknowledgement recived from the server".encode())
 ```
 ![image](https://user-images.githubusercontent.com/118756330/205697374-68980d18-f7eb-4d67-808e-eabf7f13bb9c.png)
-### <a href = https://github.com/secaids/cn/#INDEX>Index</a>### <a href = https://github.com/secaids/cn/#INDEX>Index</a>
+### <a href = https://github.com/secaids/cn/#INDEX>Index</a>
 # Exp - 3 - SOCKET PROGRAMMING
 ## ALGO
 ### Server:
